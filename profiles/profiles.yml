@@ -1,0 +1,12 @@
+default:
+  target: dev
+  outputs:
+
+    dev:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('DBT_PROJECT') }}"
+      dataset: "{{ env_var('DBT_DEV_DATASET') }}"
+      threads: 4
+      keyfile: "{{ env_var('GITPOD_REPO_ROOT') }}/profiles/service_account.json"
+      location: "{{ env_var('DBT_LOCATION') }}"
