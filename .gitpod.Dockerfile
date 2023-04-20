@@ -12,3 +12,4 @@ COPY requirements.txt /tmp
 RUN cd /tmp && pip install -r requirements.txt
 
 RUN echo 'export DBT_PROFILES_DIR=$GITPOD_REPO_ROOT/profiles/' >> ~/.bashrc
+RUN echo 'export DBT_CONNECTOR=SNOWFLAKE' >> ~/.bashrc
