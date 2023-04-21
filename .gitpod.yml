@@ -4,7 +4,7 @@ image:
 tasks:
   - name: dbt
     command: |
-      echo $DBT_SNOWFLAKE_PRIVATE_KEY > $GITPOD_REPO_ROOT/profiles/private_key.txt
+      python3 $GITPOD_REPO_ROOT/generate_key.py
       dbt debug
       dbt deps
 vscode:

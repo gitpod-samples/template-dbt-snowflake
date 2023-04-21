@@ -5,9 +5,7 @@ default:
       type: snowflake
       account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
       user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
-
-      # Keypair config
-      private_key_path: "{{ env_var('GITPOD_REPO_ROOT') }}/profiles/private_key.txt"
+      private_key_path: "{{ env_var('GITPOD_REPO_ROOT') }}/profiles/private_key.p8"
 
       database: "{{ env_var('DBT_SNOWFLAKE_DB') }}"
       warehouse: "{{ env_var('DBT_SNOWFLAKE_WH') }}"
