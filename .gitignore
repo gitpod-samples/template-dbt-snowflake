@@ -138,3 +138,4 @@ profiles/.user.yml
 profiles/service_account.json
 logs/
 profiles/private*
+*.p8
