@@ -7,7 +7,7 @@ This is a [dbt](https://www.getdbt.com/) template configured for ephemeral cloud
 Before you can connect to Snowflake, you need to create the following six [environment variables in Gitpod](https://gitpod.io/user/variables). This template uses Snowflake's [key pair authentication method](https://docs.snowflake.com/en/user-guide/key-pair-auth). By changing the environment variables and adapting the `profiles.yml`, it is possible to connect to Snowflake using the other methods that are listed in the [dbt documentation](https://docs.getdbt.com/reference/warehouse-setups/snowflake-setup). Since this config includes your private key, we encourage you to only use it for testing. Please check [this blog post](https://www.gitpod.io/blog/signing-git-commits-on-gitpod-with-1-password) on how to manage your SSH keys with 1password.
 
 - `DBT_SNOWFLAKE_USER`: your username
-- `DBT_SNOWFLAKE_PRIVATE_KEY`: the content of the private SSH key file, newlines should be replaced with whitespaces
+- `DBT_SNOWFLAKE_PRIVATE_KEY`: the content of the private SSH key file (ensure that newlines are represented by whitespaces)
 - `DBT_SNOWFLAKE_ACCOUNT`: the address of your Snowflake instance
 - `DBT_SNOWFLAKE_WH`: the name of the warehouse
 - `DBT_SNOWFLAKE_DB`: the name of the database
