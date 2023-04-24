@@ -2,11 +2,18 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: dbt
+  - name: connect
     command: |
       python3 $GITPOD_REPO_ROOT/generate_key.py
       dbt debug
       dbt deps
+    openMode: split-right
+  - name: generate docs
+    command: |
+      dbt docs generate
+      dbt docs serve --no-browser --port 8080
+    openMode: split-right
+
 vscode:
   extensions:
     - ms-python.python
