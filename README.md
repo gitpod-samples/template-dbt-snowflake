@@ -2,14 +2,16 @@
 
 This is a [dbt](https://www.getdbt.com/) template configured for ephemeral cloud development environments on [Gitpod](https://www.gitpod.io/). The project is based on the famous [jaffle_shop example](https://github.com/dbt-labs/jaffle_shop/).
 
-## Connecting to BigQuery
+## Connecting to Snowflake
 
-Before you can connect to BigQuery, you need to create the following four [environment variables in Gitpod](https://gitpod.io/user/variables).
+Before you can connect to Snowflake, you need to create the following six [environment variables in Gitpod](https://gitpod.io/user/variables). This template uses Snowflake's [key pair authentication method](https://docs.snowflake.com/en/user-guide/key-pair-auth). By changing the environment variables and adapting the `profiles.yml`, it is possible to connect to Snowflake using the other methods that are listed in the [dbt documentation](https://docs.getdbt.com/reference/warehouse-setups/snowflake-setup). Since this config includes your private key, we encourage you to only use it for testing. Please check [this blog post](https://www.gitpod.io/blog/signing-git-commits-on-gitpod-with-1-password) on how to manage your SSH keys with 1password.
 
-- `DBT_SERVICE_ACCOUNT`: the content of a valid service account JSON
-- `DBT_PROJECT`: the name of your dbt project, in this case it is `gitpod_sample`
-- `DBT_DEV_DATASET`: this depends on personal preference, e.g. `dbt_dev`
-- `DBT_LOCATION`: the location of your BigQuery project, i.e. `US` or `EU`
+- `DBT_SNOWFLAKE_USER`: your username
+- `DBT_SNOWFLAKE_PRIVATE_KEY`: the content of the private SSH key file (ensure that newlines are represented by whitespaces)
+- `DBT_SNOWFLAKE_ACCOUNT`: the address of your Snowflake instance
+- `DBT_SNOWFLAKE_WH`: the name of the warehouse
+- `DBT_SNOWFLAKE_DB`: the name of the database
+- `DBT_SNOWFLAKE_SCHEMA`: the name of the schema you want to use for dbt
 
 Please check the [dbt configuration](https://docs.getdbt.com/reference/profiles.yml) if you want to connect to any other data warehouse.
 
@@ -17,7 +19,7 @@ Please check the [dbt configuration](https://docs.getdbt.com/reference/profiles.
 
 Click the button below to start a new development environment:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-samples/template-dbt-bigquery)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-samples/template-dbt-snowflake)
 
 The workspace will then try to connect to your data warehose. To use the models in this example project you need to run the following commands.
 

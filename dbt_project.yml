@@ -1,0 +1,31 @@
+name: 'gitpod_sample'
+
+config-version: 2
+version: '1.0.0'
+
+profile: 'default'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+docs-paths: ["docs"]
+asset-paths: ["assets"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+models:
+  gitpod_sample:
+    materialized: table
+    staging:
+      materialized: view
+
+seeds:
+  schema: seeds
