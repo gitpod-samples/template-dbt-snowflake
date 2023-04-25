@@ -11,7 +11,7 @@ tasks:
       python3 $GITPOD_REPO_ROOT/generate_key.py
       dbt debug
       dbt deps
-    openMode: split-right
+    openMode: split-left
   - name: generate docs
     command: |
       dbt docs generate
