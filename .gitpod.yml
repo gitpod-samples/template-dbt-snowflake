@@ -7,8 +7,11 @@ ports:
 
 tasks:
   - name: connect
+    # The private SSH key is stored in a single line as DBT_SNOWFLAKE_PRIVATE_KEY. Unfortunately,
+    # Snowflake will only accept the key if it is multi-line. The sed command transforms the key
+    # and then stores it as a file, which can be processed by Snowflake.
     command: |
-      python3 $GITPOD_REPO_ROOT/generate_key.py
+      echo "${DBT_SNOWFLAKE_PRIVATE_KEY}" | sed -e "s/-----BEGIN PRIVATE KEY-----/&\n/" -e "s/-----END PRIVATE KEY-----/\n&/" -e "s/\S\{64\}/&\n/g" > $GITPOD_REPO_ROOT/profiles/private_key.p8
       dbt debug
       dbt deps
     openMode: split-left

@@ -1,15 +1,11 @@
+# Use Gitpod's latest Python image.
 FROM gitpod/workspace-python:latest
 
-USER root
+# Set the path of dbt's profiles file.
+ENV DBT_PROFILES_DIR=./profiles/
 
-RUN apt-get update && \
-    apt-get install -y wget git tree ssh nano sudo nmap man tmux curl joe && \
-    rm -rf /var/lib/apt/lists/*
-
-USER gitpod
-
+# Copy requirements file from host into Container.
 COPY requirements.txt /tmp
-RUN cd /tmp && pip install -r requirements.txt
 
-RUN echo 'export DBT_PROFILES_DIR=$GITPOD_REPO_ROOT/profiles/' >> ~/.bashrc
-RUN echo 'export DBT_CONNECTOR=SNOWFLAKE' >> ~/.bashrc
+# Install the requirements.
+RUN cd /tmp && pip install -r requirements.txt
