@@ -8,7 +8,7 @@ ports:
 tasks:
   - name: connect
     command: |
-      echo $DBT_SNOWFLAKE_PRIVATE_KEY > $GITPOD_REPO_ROOT/profiles/private_key.p8
+      echo "${DBT_SNOWFLAKE_PRIVATE_KEY}" | sed -e "s/-----BEGIN PRIVATE KEY-----/&\n/" -e "s/-----END PRIVATE KEY-----/\n&/" -e "s/\S\{64\}/&\n/g" > $GITPOD_REPO_ROOT/profiles/private_key.p8
       dbt debug
       dbt deps
     openMode: split-left
